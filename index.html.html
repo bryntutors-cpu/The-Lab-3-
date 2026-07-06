@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Into Medicine — BioWithBryn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0f2147;
+      --navy-mid: #1a3566;
+      --navy-light: #243f7a;
+      --gold: #c8a84b;
+      --gold-light: #e8c96a;
+      --white: #ffffff;
+      --off-white: #f7f8fc;
+      --grey-light: #eaecf3;
+      --grey-mid: #b0b8cc;
+      --grey-text: #5a6278;
+      --body-max: 1100px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--navy);
+      background: var(--white);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--grey-light);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--grey-text);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--navy); }
+
+    .nav-cta {
+      background: var(--navy);
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--navy-mid) !important; color: var(--white) !important; }
+
+    /* HERO */
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 0%, rgba(200,168,75,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse at 10% 100%, rgba(36,63,122,0.6) 0%, transparent 50%);
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: var(--body-max);
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      border: 1px solid rgba(200,168,75,0.35);
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.85rem 2rem;
+      border-radius: 7px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.85rem 2rem;
+      border-radius: 7px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.7); }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 3.5rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* SECTION SHARED */
+    section { padding: 5rem 2rem; }
+
+    .section-inner { max-width: var(--body-max); margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      color: var(--grey-text);
+      font-size: 1rem;
+      max-width: 540px;
+      line-height: 1.7;
+    }
+
+    /* WHAT'S INSIDE */
+    .modules-section { background: var(--off-white); }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+
+    .module-card {
+      background: var(--white);
+      border: 1px solid var(--grey-light);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: box-shadow 0.2s, transform 0.15s;
+      cursor: default;
+    }
+
+    .module-card:hover {
+      box-shadow: 0 8px 28px rgba(15,33,71,0.09);
+      transform: translateY(-2px);
+    }
+
+    .module-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .module-num {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-mid);
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    .module-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .module-desc {
+      font-size: 0.875rem;
+      color: var(--grey-text);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .module-lessons {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .module-lessons li {
+      font-size: 0.8rem;
+      color: var(--grey-text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .module-lessons li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .locked-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--grey-mid);
+      border: 1px solid var(--grey-light);
+      border-radius: 100px;
+      padding: 0.2rem 0.6rem;
+      margin-top: 1rem;
+    }
+
+    /* ABOUT BRYN */
+    .about-section {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .about-image-wrapper {
+      position: relative;
+    }
+
+    .about-image-placeholder {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: 12px;
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: rgba(255,255,255,0.15);
+    }
+
+    .about-tag {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--white);
+      border: 1px solid var(--grey-light);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 8px 24px rgba(15,33,71,0.1);
+    }
+
+    .about-tag-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--navy);
+      display: block;
+    }
+
+    .about-tag-label { font-size: 0.75rem; color: var(--grey-text); }
+
+    .about-text h2 { margin-bottom: 1.25rem; }
+
+    .about-text p {
+      color: var(--grey-text);
+      margin-bottom: 1rem;
+      line-height: 1.75;
+    }
+
+    .credential-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .credential-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--grey-text);
+    }
+
+    .credential-list li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-section { background: var(--navy); color: var(--white); }
+    .testimonials-section .section-sub { color: rgba(255,255,255,0.6); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .author-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--navy-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+
+    .author-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .author-school {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* PRICING */
+    .pricing-section { background: var(--off-white); }
+
+    .pricing-card-wrapper {
+      max-width: 480px;
+      margin: 3rem auto 0;
+    }
+
+    .pricing-card {
+      background: var(--white);
+      border: 2px solid var(--navy);
+      border-radius: 14px;
+      padding: 2.5rem;
+      text-align: center;
+      box-shadow: 0 16px 48px rgba(15,33,71,0.12);
+    }
+
+    .pricing-badge {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-card .tagline {
+      font-size: 0.875rem;
+      color: var(--grey-text);
+      margin-bottom: 1.5rem;
+    }
+
+    .price-display {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 0.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .price-currency {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+      padding-bottom: 0.35rem;
+    }
+
+    .price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .price-note {
+      font-size: 0.8rem;
+      color: var(--grey-mid);
+      margin-bottom: 2rem;
+    }
+
+    .price-features {
+      list-style: none;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .price-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--grey-text);
+    }
+
+    .price-features li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .guarantee {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--grey-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    /* FAQ */
+    .faq-section { background: var(--white); }
+
+    .faq-list {
+      max-width: 680px;
+      margin: 3rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--grey-light);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 1.25rem 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .faq-question:hover { color: var(--navy-mid); }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1.5px solid var(--grey-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--grey-mid);
+      transition: transform 0.25s;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      font-size: 0.9rem;
+      color: var(--grey-text);
+      line-height: 1.75;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding-bottom: 1.25rem;
+    }
+
+    /* CTA BANNER */
+    .cta-banner {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      margin-bottom: 1rem;
+    }
+
+    .cta-banner p {
+      color: rgba(255,255,255,0.65);
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      font-size: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0a1830;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+    }
+
+    footer a { color: rgba(255,255,255,0.4); text-decoration: none; margin: 0 0.5rem; }
+    footer a:hover { color: rgba(255,255,255,0.7); }
+
+    /* VIDEO PREVIEW */
+    .preview-section { background: var(--white); }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .video-card {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--grey-light);
+      transition: box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .video-card:hover { box-shadow: 0 6px 24px rgba(15,33,71,0.09); }
+
+    .video-thumb {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .video-thumb .play-btn {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .play-icon {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 0 8px 16px;
+      border-color: transparent transparent transparent var(--navy);
+      margin-left: 3px;
+    }
+
+    .video-lock {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: rgba(15,33,71,0.75);
+      color: var(--white);
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .video-free {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .video-info { padding: 0.85rem; }
+    .video-module { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+    .video-title { font-size: 0.875rem; font-weight: 600; color: var(--navy); margin-bottom: 0.25rem; }
+    .video-duration { font-size: 0.75rem; color: var(--grey-mid); }
+
+    /* MOBILE */
+    @media (max-width: 680px) {
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-tag { bottom: auto; top: -1rem; right: 1rem; }
+      .nav-links { display: none; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">BioWith<span>Bryn</span></a>
+  <ul class="nav-links">
+    <li><a href="#modules">What's Inside</a></li>
+    <li><a href="#about">About Bryn</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#pricing" class="nav-cta">Get Access</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">The Complete Medical School Application Course</span>
+    <h1>Everything you need to<br><em>get into medicine.</em></h1>
+    <p class="hero-sub">From your UCAT strategy to your MMI performance — a step-by-step guide built by a UK medical student who's been through every part of the process.</p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">Get Lifetime Access — £49</a>
+      <a href="#modules" class="btn-secondary">See what's inside</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Modules</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">40+</span>
+        <span class="stat-label">Video Lessons</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">8 hrs</span>
+        <span class="stat-label">Of Content</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">Lifetime</span>
+        <span class="stat-label">Access</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE PREVIEW VIDEOS -->
+<section class="preview-section" id="preview">
+  <div class="section-inner">
+    <span class="section-label">Free Previews</span>
+    <h2 class="section-title">Watch before you buy</h2>
+    <p class="section-sub">Two lessons are free for everyone. The rest unlock when you purchase.</p>
+
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-thumb">
+          <div class="play-btn"><div class="play-icon"></div></div>
+          <span class="video-free">FREE</span>
+        </div>
+        <div class="video-info">
+          <div class="video-module">Getting Started</div>
+          <div class="video-title">How the UK medical school application really works</div>
+          <div class="video-duration">12 min</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb">
+          <div class="play-btn"><div class="play-icon"></div></div>
+          <span class="video-free">FREE</span>
+        </div>
+        <div class="video-info">
+          <div class="video-module">UCAT Prep</div>
+          <div class="video-title">My exact UCAT study plan (from 2400+ scorer)</div>
+          <div class="video-duration">18 min</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb" style="opacity:0.6">
+          <div class="play-btn"><div class="play-icon"></div></div>
+          <span class="video-lock">🔒 Locked</span>
+        </div>
+        <div class="video-info">
+          <div class="video-module">Personal Statement</div>
+          <div class="video-title">Writing your opening paragraph (with examples)</div>
+          <div class="video-duration">22 min</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb" style="opacity:0.6">
+          <div class="play-btn"><div class="play-icon"></div></div>
+          <span class="video-lock">🔒 Locked</span>
+        </div>
+        <div class="video-info">
+          <div class="video-module">Interview Coaching</div>
+          <div class="video-title">How to answer "Why medicine?" without sounding generic</div>
+          <div class="video-duration">16 min</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="modules-section" id="modules">
+  <div class="section-inner">
+    <span class="section-label">The Curriculum</span>
+    <h2 class="section-title">Five modules. Every stage covered.</h2>
+    <p class="section-sub">Structured to follow the real timeline of a medical school application — from choosing where to apply, to walking into your interview.</p>
+
+    <div class="modules-grid">
+
+      <div class="module-card">
+        <div class="module-icon">🏫</div>
+        <span class="module-num">Module 1</span>
+        <div class="module-title">Choosing Your Medical Schools</div>
+        <div class="module-desc">How to build a realistic shortlist based on your grades, UCAT score, and the type of course you want.</div>
+        <ul class="module-lessons">
+          <li>Graduate-entry vs undergraduate — which is right for you?</li>
+          <li>Understanding entry requirements for every UK school</li>
+          <li>How to balance ambitious and safe choices</li>
+          <li>The schools that weight UCAT most heavily</li>
+          <li>Rural vs city campuses — does it matter?</li>
+        </ul>
+        <span class="locked-badge">🔒 8 lessons · 1h 40min</span>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">🧠</div>
+        <span class="module-num">Module 2</span>
+        <div class="module-title">UCAT Preparation</div>
+        <div class="module-desc">A structured approach to each UCAT subtest, with timed practice strategies and common mistakes to avoid.</div>
+        <ul class="module-lessons">
+          <li>Verbal Reasoning — spotting the trap answers</li>
+          <li>Decision Making — the question types to master first</li>
+          <li>Quantitative Reasoning — mental maths shortcuts</li>
+          <li>Abstract Reasoning — pattern recognition hacks</li>
+          <li>Situational Judgement — what the examiners actually want</li>
+        </ul>
+        <span class="locked-badge">🔒 10 lessons · 2h 15min</span>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">📝</div>
+        <span class="module-num">Module 3</span>
+        <div class="module-title">Personal Statement</div>
+        <div class="module-desc">How to write a statement that stands out for the right reasons — with annotated real examples and a full editing framework.</div>
+        <ul class="module-lessons">
+          <li>What admissions tutors are actually looking for</li>
+          <li>Structuring your experiences for maximum impact</li>
+          <li>Reflecting on work experience without being clichéd</li>
+          <li>Showing academic interest beyond A-level content</li>
+          <li>Common mistakes that get statements rejected</li>
+        </ul>
+        <span class="locked-badge">🔒 9 lessons · 1h 55min</span>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">🩺</div>
+        <span class="module-num">Module 4</span>
+        <div class="module-title">Work Experience</div>
+        <div class="module-desc">How to find meaningful placements, what to observe, and how to talk about what you've learnt.</div>
+        <ul class="module-lessons">
+          <li>How to actually get shadowing experience in the NHS</li>
+          <li>What to look for when you're in clinical settings</li>
+          <li>Writing about work experience in your statement</li>
+          <li>Using non-clinical volunteering effectively</li>
+          <li>Questions to ask doctors that show genuine curiosity</li>
+        </ul>
+        <span class="locked-badge">🔒 7 lessons · 1h 20min</span>
+      </div>
+
+      <div class="module-card">
+        <div class="module-icon">🎤</div>
+        <span class="module-num">Module 5</span>
+        <div class="module-title">Interview Coaching</div>
+        <div class="module-desc">MMI and panel interview preparation — structure, common scenarios, NHS knowledge, and ethics questions walked through in full.</div>
+        <ul class="module-lessons">
+          <li>How MMI stations are marked (and what that means for you)</li>
+          <li>Ethics frameworks you actually need to know</li>
+          <li>NHS structure and current issues in UK healthcare</li>
+          <li>Role-play station strategies</li>
+          <li>Full mock interview with commentary</li>
+        </ul>
+        <span class="locked-badge">🔒 9 lessons · 2h 05min</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-image-wrapper">
+        <div class="about-image-placeholder">👩‍⚕️</div>
+        <div class="about-tag">
+          <span class="about-tag-num">90k+</span>
+          <span class="about-tag-label">YouTube subscribers</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-label">Your Instructor</span>
+        <h2 class="section-title">Hi, I'm Bryn — a UK medical student.</h2>
+        <p>I went through every part of the application process — the UCAT, the personal statement rewrites, the work experience scramble, and a lot of MMI practice. I know what it feels like to not know where to start.</p>
+        <p>After sharing revision and application advice on YouTube, I built this course to give you everything in one place, structured in the order you actually need it.</p>
+        <ul class="credential-list">
+          <li>Current UK medical student with a surgical interest</li>
+          <li>YouTube channel with 90k+ subscribers following my journey</li>
+          <li>Covered UCAT, personal statements, interviews, and NHS knowledge on camera</li>
+          <li>Helped thousands of students through free content — this is the complete version</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div class="section-inner">
+    <span class="section-label" style="color: var(--gold);">What Students Say</span>
+    <h2 class="section-title" style="color: var(--white);">From people who got their offers</h2>
+    <p class="section-sub">Real feedback from students who used BioWithBryn content during their application cycle.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"I'd been watching Bryn's YouTube videos throughout my application. Having everything structured in a proper course made such a difference — I knew exactly what to do and when."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SJ</div>
+          <div>
+            <div class="author-name">Sophie J.</div>
+            <div class="author-school">Offer from Manchester Medicine</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The interview module alone was worth the price. I went from panicking about MMI to actually feeling prepared. Got two offers in the end."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">RP</div>
+          <div>
+            <div class="author-name">Rohan P.</div>
+            <div class="author-school">Offer from Sheffield Medicine</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"The personal statement module gave me the framework I needed. I rewrote my draft completely and my tutor said it was the best she'd seen. Got an offer from my first choice."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AG</div>
+          <div>
+            <div class="author-name">Aisha G.</div>
+            <div class="author-school">Offer from Bristol Medicine</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="section-inner" style="text-align:center">
+    <span class="section-label">Pricing</span>
+    <h2 class="section-title">One price. Everything included.</h2>
+    <p class="section-sub" style="margin: 0 auto;">No subscription. Pay once and keep access forever — including any new lessons added in future.</p>
+
+    <div class="pricing-card-wrapper">
+      <div class="pricing-card">
+        <span class="pricing-badge">Lifetime Access</span>
+        <h3>Get Into Medicine</h3>
+        <p class="tagline">The complete UK medical school application course</p>
+        <div class="price-display">
+          <span class="price-currency">£</span>
+          <span class="price-amount">49</span>
+        </div>
+        <p class="price-note">One-off payment — no subscription</p>
+
+        <ul class="price-features">
+          <li>All 5 modules — 40+ video lessons</li>
+          <li>8+ hours of structured content</li>
+          <li>UCAT strategy, personal statement guide, interview coaching</li>
+          <li>Work experience and school selection modules</li>
+          <li>Access on any device, watch at your own pace</li>
+          <li>All future updates included at no extra cost</li>
+          <li>Private student community access</li>
+        </ul>
+
+        <a href="#" class="btn-primary" style="width: 100%; text-align: center; display: block; padding: 1rem;">
+          Buy Now — £49
+        </a>
+
+        <p class="guarantee">🔒 Secure checkout via Stripe</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner" style="text-align:center">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title">Common questions</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Is this suitable for A-level students applying for the first time?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">Yes — the course is designed for anyone in the UK applying to undergraduate medicine, whether it's your first attempt or you're reapplying. It starts from the basics and builds up, so no prior knowledge of the process is needed.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What if I've already submitted my UCAS application?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">The interview module will still be highly relevant — many students purchase after submitting to focus on their interview prep. The UCAT and personal statement modules will be most useful before submission.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How long do I have access?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">Lifetime access. Once you purchase, you can return to the course at any time — including during interview season, or if you're reapplying next year.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Is there a refund policy?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">Yes — if you're not satisfied within 14 days of purchase, contact us for a full refund. No questions asked.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Does this cover graduate-entry medicine?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">The course focuses primarily on undergraduate medicine, but the interview coaching and personal statement modules are relevant for graduate applicants too. A dedicated graduate-entry module is planned for a future update.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready to start your application?</h2>
+  <p>Join students who've used BioWithBryn to get offers from UK medical schools.</p>
+  <a href="#pricing" class="btn-primary">Get Lifetime Access — £49</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:0.75rem">© 2025 BioWithBryn. All rights reserved.</p>
+  <div>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
+    <a href="https://youtube.com" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
